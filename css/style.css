@@ -1,3 +1,7 @@
+* {
+    font-family: 'Montserrat', sans-serif;
+}
+
 #informations-conversion {
     flex-direction: column;
 }
@@ -9,6 +13,10 @@
 .bi-arrow-left-right {
     display: inline-block;
     transform: rotate(-90deg);
+}
+
+.bi-arrow-left-right, .bi-arrow-counterclockwise {
+    font-size: 18px;
 }
 
 @media (min-width: 768px) {
