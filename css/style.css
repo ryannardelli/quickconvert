@@ -16,7 +16,11 @@
 }
 
 .bi-arrow-left-right, .bi-arrow-counterclockwise {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-size: 18px;
+    padding: 5px;
 }
 
 @media (min-width: 768px) {
@@ -30,5 +34,9 @@
 
     .bi-arrow-left-right {
         transform: none;
+    }
+
+    .bi-arrow-left-right, .bi-arrow-counterclockwise {
+        padding: 0;
     }
 }
