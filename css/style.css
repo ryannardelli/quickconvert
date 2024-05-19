@@ -1,0 +1,26 @@
+#informations-conversion {
+    flex-direction: column;
+}
+
+#informations-conversion select {
+    margin-bottom: 2rem;
+}
+
+.bi-arrow-left-right {
+    display: inline-block;
+    transform: rotate(-90deg);
+}
+
+@media (min-width: 768px) {
+    #informations-conversion {
+        flex-direction: row;
+    }
+
+    #informations-conversion select {
+        margin-bottom: 0;
+    }
+
+    .bi-arrow-left-right {
+        transform: none;
+    }
+}
