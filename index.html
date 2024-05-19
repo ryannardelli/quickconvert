@@ -22,22 +22,29 @@
 <body>
     <!-- MAIN -->
     <div class="container p-4">
-       <div class="col-12">
+       <div class="col-12 mb-4">
             <h1>Conversor de Moeda</h1>
        </div>
        <div class="col-12" id="informations">
-        <form>
+        <form class="needs-validation" autocomplete="off" novalidate>
             <div class="row">
                 <div class="col-12 col-md-4 mb-4">
                     <label for="value" class="form-label">Valor</label>
-                    <input type="text" class="form-control" id="value" name="value" placeholder="R$ 0,00">
+                    <input type="text" class="form-control" id="value" name="value" placeholder="R$ 0,00" required>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                    <div class="invalid-feedback">
+                        O campo Valor é obrigatório.
+                    </div>
                 </div>
 
                 <div class="col-12 col-md-4 mb-4">
                     <label for="conversion_of" class="form-label">Converter de:</label>
                     <div class="col-12 d-flex" id="informations-conversion">
-                        <select name="conversion_of" id="conversion_of" class="form-select">
-                            <option selected>Real (BRL)</option>
+                        <select name="conversion_of" id="conversion_of" class="form-select" required>
+                            <option selected disabled value="">Selecionar</option>
+                            <option value="brl">Real (BRL)</option>
                             <option value="usd">Dólar Americano (USD)</option>
                             <option value="cad">Dólar Canadense (CAD)</option>
                             <option value="eur">Euro (EUR)</option>
@@ -51,6 +58,10 @@
                             <option value="cny">Yuan Chinês (CHF)</option>
                         </select>
 
+                        <!-- <div class="invalid-feedback">
+                            Please select a valid state.
+                        </div> -->
+                       
                         <button type="button" class="btn btn-primary m-0 ms-md-3" data-bs-toggle="tooltip" data-bs-placement="top" title="Trocar">
                             <i class="bi bi-arrow-left-right"></i>
                         </button>
@@ -60,9 +71,10 @@
                 <div class="col-12 col-md-4 mb-4">
                     <label for="conversion_tio" class="form-label">Para:</label>
                     <div class="col-12 d-flex" id="informations-conversion">
-                        <select name="conversion_of" id="conversion_of" class="form-select">
-                            <option>Real (BRL)</option>
-                            <option value="usd" selected>Dólar Americano (USD)</option>
+                        <select name="conversion_of" id="conversion_of" class="form-select" required>
+                            <option selected disabled value="">Selecionar</option>
+                            <option value="brl">Real (BRL)</option>
+                            <option value="usd">Dólar Americano (USD)</option>
                             <option value="cad">Dólar Canadense (CAD)</option>
                             <option value="eur">Euro (EUR)</option>
                             <option value="gbp">Libra Esterlina (GBP)</option>
@@ -75,7 +87,7 @@
                             <option value="cny">Yuan Chinês (CHF)</option>
                         </select>
 
-                        <button type="button" class="btn btn-primary m-0 ms-md-3" data-bs-toggle="collapse" data-bs-target="#collapse_conversion" aria-expanded="false" aria-controls="collapse_conversion">
+                        <button type="submit" class="btn btn-primary m-0 ms-md-3" data-bs-toggle="collapse" data-bs-target="#collapse_conversion" aria-expanded="false" aria-controls="collapse_conversion">
                             <i class="bi bi-arrow-counterclockwise"></i>
                         </button>
                     </div>
