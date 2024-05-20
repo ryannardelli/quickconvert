@@ -12,10 +12,6 @@ const btn_options = document.querySelector('#btn_troca_options');
                 event.stopPropagation();
             } else {
                 event.preventDefault();
-                const elements = document.querySelectorAll('.element');
-                elements.forEach(element => {
-                    element.id = 'collapse_conversion';
-                });
             }
           form.classList.add('was-validated');
         }, false);
@@ -49,3 +45,31 @@ btn_options.addEventListener('click', () => {
     select_one.value = valorSelectTwo;
     select_two.value = valorSelectOne;
 });
+
+async function getResponse_cotacao() {
+    try {
+        const response = await fetch('https://economia.awesomeapi.com.br/json/last/USD-BRL,BRL-USD');
+        return response.json();
+    } catch(e) {
+        console.log(e);
+    }
+};
+
+async function setResponse_cotacao() {
+    try {
+        const response =  await getResponse_cotacao();
+        console.log(response);
+    } catch(e) {
+        console.log(e);
+    }
+}
+
+setResponse_cotacao();
+
+// async function getResponse() {
+//     const response = await fetch('https://flagcdn.com/pt/codes.json');
+//     const elements = await response.json();
+//     console.log(elements)
+// };
+
+// getResponse();
