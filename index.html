@@ -83,7 +83,7 @@
                             <option value="cny">Yuan Chinês (CHF)</option>
                         </select>
 
-                        <button type="submit" class="btn btn-primary m-0 ms-md-3" data-bs-toggle="collapse" data-bs-target="#collapse_conversion" aria-expanded="false" aria-controls="collapse_conversion">
+                        <button type="submit" class="btn btn-primary m-0 ms-md-3" data-bs-toggle="tooltip" data-bs-placement="top" title="Converter" >
                             <i class="bi bi-arrow-counterclockwise"></i>
                         </button>
                     </div>
@@ -93,42 +93,32 @@
        </div>
     </div>
 
-    <div class="container">
-        <div style="min-height: 120px;">
-            <div class="collapse collapse-horizontal element">
-              <div class="card card-body m-0 border-0" style="width: 600px;">
-                <h2>Resultado da Conversão</h2>
-              </div>
-            </div>
+    <div class="container mb-4 pt-4">
+        <div class="col-12">
+            <h2>Resultado da Conversão</h2>
         </div>
     </div>
     
-    <!-- COLLAPSE -->
-    <div class="container" id="conversion-result">
-        <div style="min-height: 120px;">
-            <div class="collapse collapse-horizontal element">
-              <div class="card card-body m-0" style="width: 400px;">
-                <p>Conversão de:</p>
-                <p>Valor a converter:</p>
-              </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-4">
+                <div class="card card-body m-0">
+                    <p>Conversão de:</p>
+                    <p>Valor a converter:</p>
+                  </div>
             </div>
-        </div>
-
-        <div>
-            <div class="collapse collapse-horizontal element">
-                <div class="card card-body border-0"> 
+    
+            <div class="col-12 col-md-4" style="display: flex; align-items: center;">
+                <div class="card card-body m-0 border-0">
                     <i class="bi bi-arrow-left-right"></i>
                 </div>
             </div>
-        </div>
     
-        
-        <div style="min-height: 120px;">
-            <div class="collapse collapse-horizontal element">
-              <div class="card card-body m-0" style="width: 400px;">
-                <p>Para:</p>
-                <p>Resultado da conversão:</p>
-              </div>
+            <div class="col-12 col-md-4">
+                <div class="card card-body m-0">
+                    <p>Conversão de:</p>
+                    <p>Valor a converter:</p>
+                  </div>
             </div>
         </div>
     </div>
