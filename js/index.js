@@ -13,7 +13,6 @@ const btn_options = document.querySelector('#btn_troca_options');
             } else {
                 event.preventDefault();
                 const elements = document.querySelectorAll('.element');
-                // document.querySelector('#container_result').style.display = 'block';
                 elements.forEach(element => {
                     element.id = 'collapse_conversion';
                 });
