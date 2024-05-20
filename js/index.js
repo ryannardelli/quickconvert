@@ -10,8 +10,8 @@ const btn_options = document.querySelector('#btn_troca_options');
             if (!form.checkValidity()) {
                 event.preventDefault();
                 event.stopPropagation();
-                document.querySelector('#container_result').style.display = 'block';
             } else {
+                document.querySelector('#container_result').style.display = 'block';
                 event.preventDefault();
             }
           form.classList.add('was-validated');
