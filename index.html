@@ -21,7 +21,7 @@
 </head>
 <body>
     <!-- MAIN -->
-    <div class="container p-4">
+    <div class="container pt-4">
        <div class="col-12 mb-4">
             <h1>Conversor de Moeda</h1>
        </div>
@@ -31,12 +31,11 @@
                 <div class="col-12 col-md-4 mb-4">
                     <label for="value" class="form-label">Valor</label>
                     <input type="text" class="form-control" id="value" name="value" placeholder="R$ 0,00" required>
-                    <div class="valid-feedback">
+                    <!-- <div class="valid-feedback">
                         Looks good!
-                    </div>
-                    <div class="invalid-feedback">
-                        O campo Valor é obrigatório.
-                    </div>
+                    </div> -->
+                    <div class="invalid-feedback">O campo Valor não pode ficar em branco.</div>
+                    <div class="invalid-feedback">O campo Valor não pode cônter letras.</div>
                 </div>
 
                 <div class="col-12 col-md-4 mb-4">
@@ -101,16 +100,17 @@
     <div class="container" id="conversion-result">
         <div style="min-height: 120px;">
             <div class="collapse collapse-horizontal" id="collapse_conversion">
-              <div class="card card-body ms-4" style="width: 400px;">
+              <div class="card card-body m-4" style="width: 400px;">
                 <p>Conversão de:</p>
                 <p>Valor a converter:</p>
               </div>
             </div>
         </div>
+    
         
         <div style="min-height: 120px;">
             <div class="collapse collapse-horizontal" id="collapse_conversion">
-              <div class="card card-body ms-4" style="width: 400px;">
+              <div class="card card-body m-4" style="width: 400px;">
                 <p>Para:</p>
                 <p>Resultado da conversão:</p>
               </div>
