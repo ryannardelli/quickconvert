@@ -11,8 +11,12 @@ const btn_options = document.querySelector('#btn_troca_options');
                 event.preventDefault();
                 event.stopPropagation();
             } else {
-                document.querySelector('#container_result').style.display = 'block';
                 event.preventDefault();
+                const elements = document.querySelectorAll('.element');
+                document.querySelector('#container_result').style.display = 'block';
+                elements.forEach(element => {
+                    element.id = 'collapse_conversion';
+                });
             }
           form.classList.add('was-validated');
         }, false);
