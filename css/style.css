@@ -25,14 +25,8 @@
 
 #conversion-result {
     display: flex;
-    flex-direction: column;
-    position: relative;
-}
-
-.icon-troca {
-    position: absolute;
-    top: 50%;
-    left: 50%;
+    align-items: center;
+    flex-direction: column;   
 }
 
 @media (min-width: 768px) {
