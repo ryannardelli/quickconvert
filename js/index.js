@@ -1,5 +1,6 @@
 const input_value = document.querySelector('#value');
 const msg = document.querySelector('.invalid-feedback');
+const btn_options = document.querySelector('#btn_troca_options');
 
 (function() {
     'use strict';
@@ -32,4 +33,15 @@ input_value.addEventListener('input', (event) => {
     }
     input_value.reportValidity();
     console.log(value);
+});
+
+btn_options.addEventListener('click', () => {
+    let select_one = document.getElementById('select_one');
+    let select_two = document.getElementById('select_two');
+    
+    let valorSelectOne = select_one.value;
+    let valorSelectTwo = select_two.value;
+    
+    select_one.value = valorSelectTwo;
+    select_two.value = valorSelectOne;
 });
