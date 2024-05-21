@@ -100,16 +100,9 @@ function setInformations() {
     let options = [];
 
     for (let i = 0; i < select_one.options.length; i++) {
-        // Guarda os valores e textos das opções de cada select
         let tempValue = select_one.options[i].value;
         let tempText = select_one.options[i].textContent;
-
         options.push(tempText);
-        // Troca os valores e textos entre os selects
-        // select_one.options[i].value = select_two.options[i].value;
-        // select_one.options[i].textContent = select_two.options[i].textContent;
-        // select_two.options[i].value = tempValue;
-        // select_two.options[i].textContent = tempText;
     }
 
     console.log(options);
