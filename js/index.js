@@ -78,7 +78,16 @@ async function getResponse_usd_brl() {
     }
 };
 
-async function get_usd_brl() {
+async function get_usd_brl_bid() {
+    try {
+        const response =  await getResponse_usd_brl();
+        return response.USDBRL.bid;
+    } catch(e) {
+        console.log(e);
+    }
+}
+
+async function get_usd_brl_ask() {
     try {
         const response =  await getResponse_usd_brl();
         return response.USDBRL.ask;
@@ -115,7 +124,6 @@ function setInformations() {
         options.push(tempText);
     }
 
-    console.log(options);
     select_one.addEventListener('change', () => {
         document.querySelector('#img_value_conversion').classList.remove('d-none');
 
@@ -215,21 +223,27 @@ function setInformations() {
 setInformations();
 
 async function addValue() {
-    const value_cotacao = await get_usd_brl();
+    const value_cotacao_usd_brl_bid = await get_usd_brl_bid();
+    const value_contacao_usd_brl_ask = await get_usd_brl_ask();
+
+    console.log(value_cotacao_usd_brl_bid);
+    console.log(value_contacao_usd_brl_ask);
+
     let select_one = document.getElementById('select_one');
     let select_two = document.getElementById('select_two');
+
     try {
-        const value_moeda = document.querySelector('#value_moeda_to_conversion');
-        const value_result_conversion = document.querySelector('#value_result_conversion');
+        const value_result_conversion_usd_brl_bid = document.querySelector('#value_result_conversion_bid');
+        const value_result_conversion_usd_brl_ask = document.querySelector('#value_result_conversion_ask');
         const value = input_value.value.trim();
 
-        if(select_one.value === 'usd' && select_two.value === 'brl') {
-            value_moeda.innerHTML = value;
-            value_result_conversion.innerHTML = (value_cotacao * value).toFixed(2);
-        } else {
-            value_moeda.innerHTML = value;
-            value_result_conversion.innerHTML = (value / value_cotacao).toFixed(2);
-        }   
+        if(select_one.value === 'brl' && select_two.value === 'usd') {
+            document.querySelectorAll('#value_moeda_to_conversion').forEach(value_moeda => {
+                value_moeda.innerHTML = value;
+            });
+            value_result_conversion_usd_brl_bid.innerHTML = (value / value_cotacao_usd_brl_bid).toFixed(2);
+            value_result_conversion_usd_brl_ask.innerHTML = (value / value_contacao_usd_brl_ask).toFixed(2);
+        } 
     } catch(e) {
         console.log(e);
     }
