@@ -35,7 +35,6 @@ input_value.addEventListener('input', (event) => {
         input_value.setCustomValidity('');
     }
     input_value.reportValidity();
-    console.log(value);
 });
 
 btn_options.addEventListener('click', () => {
@@ -98,35 +97,60 @@ async function get_usd_brl() {
 function setInformations() {
     let select_one = document.getElementById('select_one');
     let select_two = document.getElementById('select_two');
-    if(select_one) {
-        console.log('disabled');
+    let options = [];
+
+    for (let i = 0; i < select_one.options.length; i++) {
+        // Guarda os valores e textos das opções de cada select
+        let tempValue = select_one.options[i].value;
+        let tempText = select_one.options[i].textContent;
+
+        options.push(tempText);
+        // Troca os valores e textos entre os selects
+        // select_one.options[i].value = select_two.options[i].value;
+        // select_one.options[i].textContent = select_two.options[i].textContent;
+        // select_two.options[i].value = tempValue;
+        // select_two.options[i].textContent = tempText;
     }
+
+    console.log(options);
     select_one.addEventListener('change', () => {
         document.querySelector('#img_value_conversion').classList.remove('d-none');        
         if(select_one.value === 'brl') {
             document.querySelector('#img_value_conversion').src = 'https://flagcdn.com/40x30/br.png';
+            document.querySelector('#name_country_conversion').textContent = options[1];
         } else if(select_one.value === 'usd') {
             document.querySelector('#img_value_conversion').src = 'https://flagcdn.com/40x30/us.png';
+            document.querySelector('#name_country_conversion').textContent = options[2];
         } else if(select_one.value === 'cad') {
             document.querySelector('#img_value_conversion').src = 'https://flagcdn.com/40x30/ca.png';
+            document.querySelector('#name_country_conversion').textContent = options[3];
         } else if(select_one.value === 'eur') {
             document.querySelector('#img_value_conversion').src = 'https://flagcdn.com/40x30/eu.png';
+            document.querySelector('#name_country_conversion').textContent = options[4];
         } else if (select_one.value === 'gbp') {
             document.querySelector('#img_value_conversion').src = 'https://flagcdn.com/40x30/gb.png';
+            document.querySelector('#name_country_conversion').textContent = options[5];
         } else if (select_one.value === 'ars') {
             document.querySelector('#img_value_conversion').src = 'https://flagcdn.com/40x30/ar.png';
+            document.querySelector('#name_country_conversion').textContent = options[6];
         } else if (select_one.value === 'btc') {
             document.querySelector('#img_value_conversion').src = 'https://flagcdn.com/40x30/sv.png';
+            document.querySelector('#name_country_conversion').textContent = options[7];
         } else if (select_one.value === 'jpy') {
             document.querySelector('#img_value_conversion').src = 'https://flagcdn.com/40x30/jp.png';
+            document.querySelector('#name_country_conversion').textContent = options[8];
         } else if (select_one.value === 'try') {
             document.querySelector('#img_value_conversion').src = 'https://flagcdn.com/40x30/tr.png';
+            document.querySelector('#name_country_conversion').textContent = options[9];
         }  else if (select_one.value === 'aud') {
             document.querySelector('#img_value_conversion').src = 'https://flagcdn.com/40x30/au.png';
+            document.querySelector('#name_country_conversion').textContent = options[10];
         } else if (select_one.value === 'chf') {
             document.querySelector('#img_value_conversion').src = 'https://flagcdn.com/40x30/li.png';
+            document.querySelector('#name_country_conversion').textContent = options[11];
         }  else if (select_one.value === 'cny') {
             document.querySelector('#img_value_conversion').src = 'https://flagcdn.com/40x30/cn.png';
+            document.querySelector('#name_country_conversion').textContent = options[12];
         }
     });
 
@@ -134,28 +158,40 @@ function setInformations() {
         document.querySelector('#img_converter_value').classList.remove('d-none');  
         if(select_two.value === 'brl') {
             document.querySelector('#img_converter_value').src = 'https://flagcdn.com/40x30/br.png';
+            document.querySelector('#name-moeda-result').textContent = options[1];
         } else if(select_two.value === 'usd') {
             document.querySelector('#img_converter_value').src = 'https://flagcdn.com/40x30/us.png';
+            document.querySelector('#name-moeda-result').textContent = options[2];
         } else if(select_two.value === 'cad') {
             document.querySelector('#img_converter_value').src = 'https://flagcdn.com/40x30/ca.png';
+            document.querySelector('#name-moeda-result').textContent = options[3];
         } else if(select_two.value === 'eur') {
             document.querySelector('#img_converter_value').src = 'https://flagcdn.com/40x30/eu.png';
+            document.querySelector('#name-moeda-result').textContent = options[4];
         } else if (select_two.value === 'gbp') {
             document.querySelector('#img_converter_value').src = 'https://flagcdn.com/40x30/gb.png';
+            document.querySelector('#name-moeda-result').textContent = options[5];
         } else if (select_two.value === 'ars') {
             document.querySelector('#img_converter_value').src = 'https://flagcdn.com/40x30/ar.png';
+            document.querySelector('#name-moeda-result').textContent = options[6];
         } else if (select_two.value === 'btc') {
             document.querySelector('#img_converter_value').src = 'https://flagcdn.com/40x30/sv.png';
+            document.querySelector('#name-moeda-result').textContent = options[7];
         } else if (select_two.value === 'jpy') {
             document.querySelector('#img_converter_value').src = 'https://flagcdn.com/40x30/jp.png';
+            document.querySelector('#name-moeda-result').textContent = options[8];
         } else if (select_two.value === 'try') {
             document.querySelector('#img_converter_value').src = 'https://flagcdn.com/40x30/tr.png';
+            document.querySelector('#name-moeda-result').textContent = options[9];
         }  else if (select_two.value === 'aud') {
             document.querySelector('#img_converter_value').src = 'https://flagcdn.com/40x30/au.png';
+            document.querySelector('#name-moeda-result').textContent = options[10];
         } else if (select_two.value === 'chf') {
             document.querySelector('#img_converter_value').src = 'https://flagcdn.com/40x30/li.png';
+            document.querySelector('#name-moeda-result').textContent = options[11];
         }  else if (select_two.value === 'cny') {
             document.querySelector('#img_converter_value').src = 'https://flagcdn.com/40x30/cn.png';
+            document.querySelector('#name-moeda-result').textContent = options[12];
         }
     });
 }
@@ -170,8 +206,6 @@ async function addValue() {
         const value_moeda = document.querySelector('#value_moeda_to_conversion');
         const value_result_conversion = document.querySelector('#value_result_conversion');
         const value = input_value.value.trim();
-
-        console.log(value / value_cotacao);
 
         if(select_one.value === 'usd' && select_two.value === 'brl') {
             value_moeda.innerHTML = value;
