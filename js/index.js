@@ -59,7 +59,7 @@ btn_options.addEventListener('click', () => {
     img_converter_value.src = tempSrc;
 });
 
-async function getResponse_cotacao() {
+async function getResponse_usd_brl() {
     try {
         const response = await fetch('https://economia.awesomeapi.com.br/json/last/USD-BRL');
         return response.json();
@@ -70,7 +70,7 @@ async function getResponse_cotacao() {
 
 async function get_usd_brl() {
     try {
-        const response =  await getResponse_cotacao();
+        const response =  await getResponse_usd_brl();
         return response.USDBRL.ask;
     } catch(e) {
         console.log(e);
@@ -98,7 +98,11 @@ async function get_usd_brl() {
 function setInformations() {
     let select_one = document.getElementById('select_one');
     let select_two = document.getElementById('select_two');
+    if(select_one) {
+        console.log('disabled');
+    }
     select_one.addEventListener('change', () => {
+        document.querySelector('#img_value_conversion').classList.remove('d-none');        
         if(select_one.value === 'brl') {
             document.querySelector('#img_value_conversion').src = 'https://flagcdn.com/40x30/br.png';
         } else if(select_one.value === 'usd') {
@@ -127,6 +131,7 @@ function setInformations() {
     });
 
     select_two.addEventListener('change', () => {
+        document.querySelector('#img_converter_value').classList.remove('d-none');  
         if(select_two.value === 'brl') {
             document.querySelector('#img_converter_value').src = 'https://flagcdn.com/40x30/br.png';
         } else if(select_two.value === 'usd') {
