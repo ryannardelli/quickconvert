@@ -117,7 +117,14 @@ function setInformations() {
 
     console.log(options);
     select_one.addEventListener('change', () => {
-        document.querySelector('#img_value_conversion').classList.remove('d-none');        
+        document.querySelector('#img_value_conversion').classList.remove('d-none');
+
+        if(select_one.value === select_two.value) {
+            btn_conversion.disabled = true;
+        } else {
+            btn_conversion.disabled = false;
+        }
+        
         if(select_one.value === 'brl') {
             document.querySelector('#img_value_conversion').src = 'https://flagcdn.com/40x30/br.png';
             document.querySelector('#name_country_conversion').textContent = options[1];
@@ -158,7 +165,13 @@ function setInformations() {
     });
 
     select_two.addEventListener('change', () => {
-        document.querySelector('#img_converter_value').classList.remove('d-none');  
+        document.querySelector('#img_converter_value').classList.remove('d-none');
+        
+        if(select_one.value === select_two.value) {
+            btn_conversion.disabled = true;
+        } else {
+            btn_conversion.disabled = false;
+        }
         if(select_two.value === 'brl') {
             document.querySelector('#img_converter_value').src = 'https://flagcdn.com/40x30/br.png';
             document.querySelector('#name-moeda-result').textContent = options[1];
