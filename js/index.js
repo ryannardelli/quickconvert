@@ -53,12 +53,16 @@ btn_options.addEventListener('click', () => {
     let name_moeda_to_conversion = document.querySelector('#name_country_conversion');
     let name_moeda_result = document.querySelector('#name-moeda-result');
 
+    let value_to_conversion = document.querySelector('#value_moeda_to_conversion');
+    let value_result_conversion = document.querySelector('#value_result_conversion');
+
     let tempNameMoeda = name_moeda_to_conversion.innerText;
     name_moeda_to_conversion.innerText = name_moeda_result.innerText;
     name_moeda_result.innerText = tempNameMoeda;
 
-    // let value_one = document.querySelector('#value_moeda_to_conversion');
-    // let value_result = document.querySelector('#value_result_conversion');
+    let tempValueMoeda = value_to_conversion.innerText;
+    value_to_conversion.innerText = value_result_conversion.innerText;
+    value_result_conversion.innerText = tempValueMoeda;
     
     let tempSrc = img_value_conversion.src;
     img_value_conversion.src = img_converter_value.src;
