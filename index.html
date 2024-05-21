@@ -83,7 +83,7 @@
                             <option value="cny">Yuan Chinês (CHF)</option>
                         </select>
 
-                        <button type="submit" class="btn btn-primary m-0 ms-md-3" data-bs-toggle="tooltip" data-bs-placement="top" title="Converter" >
+                        <button type="submit" class="btn btn-primary m-0 ms-md-3" data-bs-toggle="tooltip" data-bs-placement="top" title="Converter" id="btn_conversion">
                             <i class="bi bi-arrow-counterclockwise"></i>
                         </button>
                     </div>
@@ -109,8 +109,8 @@
                             <img src="" class="img-fluid ps-2" alt="Image Country" id="img_value_conversion">
                         </div>
 
-                        <div class="col-12">
-                            <p>Valor a converter:</p>
+                        <div class="col-12 mt-2">
+                            <p>Valor a converter: <span id="value_moeda_to_conversion"></span></p>
                         </div>
                     </div>
                 </div>
@@ -130,8 +130,8 @@
                             <img src="" class="img-fluid ps-2" alt="Image Country" id="img_converter_value">
                         </div>
 
-                        <div class="col-12">
-                            <p>Resultado da conversão:</p>
+                        <div class="col-12 mt-2">
+                            <p>Resultado da conversão: <span id="value_result_conversion"></span></p>
                         </div>
                     </div>
                 </div>

@@ -2,6 +2,7 @@ const input_value = document.querySelector('#value');
 const msg = document.querySelector('.invalid-feedback');
 const btn_options = document.querySelector('#btn_troca_options');
 const name_conversion_country = document.querySelector('#name_country_conversion');
+const btn_conversion = document.querySelector('#btn_conversion');
 
 (function() {
     'use strict';
@@ -13,6 +14,7 @@ const name_conversion_country = document.querySelector('#name_country_conversion
                 event.stopPropagation();
             } else {
                 event.preventDefault();
+                addValue();
             }
           form.classList.add('was-validated');
         }, false);
@@ -48,6 +50,9 @@ btn_options.addEventListener('click', () => {
 
     let img_value_conversion = document.querySelector('#img_value_conversion');
     let img_converter_value = document.querySelector('#img_converter_value');
+
+    // let value_one = document.querySelector('#value_moeda_to_conversion');
+    // let value_result = document.querySelector('#value_result_conversion');
     
     let tempSrc = img_value_conversion.src;
     img_value_conversion.src = img_converter_value.src;
@@ -56,39 +61,39 @@ btn_options.addEventListener('click', () => {
 
 async function getResponse_cotacao() {
     try {
-        const response = await fetch('https://economia.awesomeapi.com.br/json/last/USD-BRL,BRL-USD');
+        const response = await fetch('https://economia.awesomeapi.com.br/json/last/USD-BRL');
         return response.json();
     } catch(e) {
         console.log(e);
     }
 };
 
-async function setResponse_cotacao() {
+async function get_usd_brl() {
     try {
         const response =  await getResponse_cotacao();
-        console.log(response);
+        return response.USDBRL.ask;
     } catch(e) {
         console.log(e);
     }
 }
 
-async function getResponseImg() {
-    try {
-        const response = await fetch('https://flagcdn.com/pt/codes.json');
-        return response.json();
-    } catch(e) {
-        console.log(e);
-    }
-};
+// async function getResponseImg() {
+//     try {
+//         const response = await fetch('https://flagcdn.com/pt/codes.json');
+//         return response.json();
+//     } catch(e) {
+//         console.log(e);
+//     }
+// };
 
-async function setResponseImg() {
-    try {
-        const response = await getResponseImg();
-        console.log(response);
-    } catch(e) {
-        console.log(e);
-    }
-}
+// async function setResponseImg() {
+//     try {
+//         const response = await getResponseImg();
+//         console.log(response);
+//     } catch(e) {
+//         console.log(e);
+//     }
+// }
 
 function setInformations() {
     let select_one = document.getElementById('select_one');
@@ -119,7 +124,7 @@ function setInformations() {
         }  else if (select_one.value === 'cny') {
             document.querySelector('#img_value_conversion').src = 'https://flagcdn.com/40x30/cn.png';
         }
-    })
+    });
 
     select_two.addEventListener('change', () => {
         if(select_two.value === 'brl') {
@@ -147,16 +152,40 @@ function setInformations() {
         }  else if (select_two.value === 'cny') {
             document.querySelector('#img_converter_value').src = 'https://flagcdn.com/40x30/cn.png';
         }
-    })
-}
-
-async function init() {
-    try {
-        await Promise.all([setResponse_cotacao(), setResponseImg()]);
-    } catch (error) {
-        console.error('Erro ao iniciar a aplicação:', error);
-    }
+    });
 }
 
 setInformations();
-init();
+
+async function addValue() {
+    const value_cotacao = await get_usd_brl();
+    let select_one = document.getElementById('select_one');
+    let select_two = document.getElementById('select_two');
+    try {
+        const value_moeda = document.querySelector('#value_moeda_to_conversion');
+        const value_result_conversion = document.querySelector('#value_result_conversion');
+        const value = input_value.value.trim();
+
+        console.log(value / value_cotacao);
+
+        if(select_one.value === 'usd' && select_two.value === 'brl') {
+            value_moeda.innerHTML = value;
+            value_result_conversion.innerHTML = (value_cotacao * value).toFixed(2);
+        } else {
+            value_moeda.innerHTML = value;
+            value_result_conversion.innerHTML = (value / value_cotacao).toFixed(2);
+        }   
+    } catch(e) {
+        console.log(e);
+    }
+}
+
+// async function init() {
+//     try {
+//         await Promise.all([addValue()]);
+//     } catch (error) {
+//         console.error('Erro ao iniciar a aplicação:', error);
+//     }
+// }
+
+// init();
