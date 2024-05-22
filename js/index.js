@@ -234,7 +234,7 @@ async function get_btc_brl_ask() {
 
 async function getResponse_jpy_brl() {
     try {
-        const response = await fetch('https://economia.awesomeapi.com.br/json/last/JPY-BRL');
+        const response = await fetch('https://economia.awesomeapi.com.br/json/last/BRL-JPY');
         return response.json();
     } catch(e) {
         console.log(e);
@@ -244,7 +244,7 @@ async function getResponse_jpy_brl() {
 async function get_jpy_brl_bid() {
     try {
         const response =  await getResponse_jpy_brl();
-        return response.JPYBRL.bid;
+        return response.BRLJPY.bid;
     } catch(e) {
         console.log(e);
     }
@@ -253,7 +253,7 @@ async function get_jpy_brl_bid() {
 async function get_jpy_brl_ask() {
     try {
         const response =  await getResponse_jpy_brl();
-        return response.JPYBRL.ask;
+        return response.BRLJPY.ask;
     } catch(e) {
         console.log(e);
     }
@@ -407,8 +407,6 @@ async function addValue() {
 
     const value_cotacao_jpy_brl_bid = await get_jpy_brl_bid();
     const value_cotacao_jpy_brl_ask = await get_jpy_brl_ask();
-    console.log(value_cotacao_jpy_brl_bid)
-    console.log(value_cotacao_jpy_brl_ask)
 
     let select_one = document.getElementById('select_one');
     let select_two = document.getElementById('select_two');
@@ -472,10 +470,10 @@ async function addValue() {
             value_result_conversion_ask.innerHTML = (value_cotacao_btc_brl_ask * value).toFixed(2);
         }
 
-        if(select_one.value === 'jpy' && select_two.value === 'brl') {
+        if(select_one.value === 'brl' && select_two.value === 'jpy') {
             value_result_conversion_bid.innerHTML = (value / value_cotacao_jpy_brl_bid).toFixed(2);
             value_result_conversion_ask.innerHTML = (value / value_cotacao_jpy_brl_ask).toFixed(2);
-        } else if (select_one.value === 'brl' && select_two.value === 'jpy') {
+        } else if (select_one.value === 'jpy' && select_two.value === 'brl') {
             value_result_conversion_bid.innerHTML = (value_cotacao_jpy_brl_bid * value).toFixed(2);
             value_result_conversion_ask.innerHTML = (value_cotacao_jpy_brl_ask * value).toFixed(2);
         }
