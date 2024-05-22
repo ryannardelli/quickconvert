@@ -105,6 +105,7 @@ async function getResponse_cad_brl() {
     }
 };
 
+
 async function get_cad_brl_bid() {
     try {
         const response =  await getResponse_cad_brl();
@@ -118,6 +119,33 @@ async function get_cad_brl_ask() {
     try {
         const response =  await getResponse_cad_brl();
         return response.CADBRL.ask;
+    } catch(e) {
+        console.log(e);
+    }
+}
+
+async function getResponse_eur_brl() {
+    try {
+        const response = await fetch('https://economia.awesomeapi.com.br/json/last/EUR-BRL');
+        return response.json();
+    } catch(e) {
+        console.log(e);
+    }
+};
+
+async function get_eur_brl_bid() {
+    try {
+        const response =  await getResponse_eur_brl();
+        return response.EURBRL.bid;
+    } catch(e) {
+        console.log(e);
+    }
+}
+
+async function get_eur_brl_ask() {
+    try {
+        const response =  await getResponse_eur_brl();
+        return response.EURBRL.ask;
     } catch(e) {
         console.log(e);
     }
@@ -255,8 +283,9 @@ async function addValue() {
 
     const value_cotacao_cad_brl_bid = await get_cad_brl_bid();
     const value_cotacao_cad_brl_ask = await get_cad_brl_ask();
-    console.log(value_cotacao_cad_brl_bid);
-    console.log(value_cotacao_cad_brl_ask);
+
+    const value_cotacao_eur_brl_bid = await get_eur_brl_bid();
+    const value_cotacao_eur_brl_ask = await get_eur_brl_ask();
 
     let select_one = document.getElementById('select_one');
     let select_two = document.getElementById('select_two');
@@ -264,13 +293,14 @@ async function addValue() {
     try {
         const value_result_conversion_bid = document.querySelector('#value_result_conversion_bid');
         const value_result_conversion_ask = document.querySelector('#value_result_conversion_ask');
-
         const value = input_value.value.trim();
 
         document.querySelectorAll('#value_moeda_to_conversion').forEach(value_moeda => {
             value_moeda.innerHTML = value;
         });
 
+
+        // de brl para
         if(select_one.value === 'brl' && select_two.value === 'usd') {
             value_result_conversion_bid.innerHTML = (value / value_cotacao_usd_brl_bid).toFixed(2);
             value_result_conversion_ask.innerHTML = (value / value_contacao_usd_brl_ask).toFixed(2);
@@ -285,6 +315,14 @@ async function addValue() {
         } else if (select_one.value === 'cad' && select_two.value === 'brl') {
             value_result_conversion_bid.innerHTML = (value_cotacao_cad_brl_bid * value).toFixed(2);
             value_result_conversion_ask.innerHTML = (value_cotacao_cad_brl_ask * value).toFixed(2);
+        }
+
+        if(select_one.value === 'brl' && select_two.value === 'eur') {
+            value_result_conversion_bid.innerHTML = (value / value_cotacao_eur_brl_bid).toFixed(2);
+            value_result_conversion_ask.innerHTML = (value / value_cotacao_eur_brl_ask).toFixed(2);
+        } else if (select_one.value === 'eur' && select_two.value === 'brl') {
+            value_result_conversion_bid.innerHTML = (value_cotacao_eur_brl_bid * value).toFixed(2);
+            value_result_conversion_ask.innerHTML = (value_cotacao_eur_brl_ask * value).toFixed(2);
         }
     } catch(e) {
         console.log(e);
