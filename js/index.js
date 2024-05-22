@@ -205,6 +205,34 @@ async function get_ars_brl_ask() {
     }
 }
 
+async function getResponse_btc_brl() {
+    try {
+        const response = await fetch('https://economia.awesomeapi.com.br/json/last/BTC-BRL');
+        return response.json();
+    } catch(e) {
+        console.log(e);
+    }
+};
+
+async function get_btc_brl_bid() {
+    try {
+        const response =  await getResponse_btc_brl();
+        return response.BTCBRL.bid;
+    } catch(e) {
+        console.log(e);
+    }
+}
+
+async function get_btc_brl_ask() {
+    try {
+        const response =  await getResponse_btc_brl();
+        return response.BTCBRL.ask;
+    } catch(e) {
+        console.log(e);
+    }
+}
+
+
 // async function getResponseImg() {
 //     try {
 //         const response = await fetch('https://flagcdn.com/pt/codes.json');
@@ -347,6 +375,9 @@ async function addValue() {
     const value_cotacao_ars_brl_bid = await get_ars_brl_bid();
     const value_cotacao_ars_brl_ask = await get_ars_brl_ask();
 
+    const value_cotacao_btc_brl_bid = await get_btc_brl_bid();
+    const value_cotacao_btc_brl_ask = await get_btc_brl_ask();
+
     let select_one = document.getElementById('select_one');
     let select_two = document.getElementById('select_two');
 
@@ -399,6 +430,14 @@ async function addValue() {
         } else if (select_one.value === 'ars' && select_two.value === 'brl') {
             value_result_conversion_bid.innerHTML = (value_cotacao_ars_brl_bid * value).toFixed(2);
             value_result_conversion_ask.innerHTML = (value_cotacao_ars_brl_ask * value).toFixed(2);
+        }
+
+        if(select_one.value === 'brl' && select_two.value === 'btc') {
+            value_result_conversion_bid.innerHTML = (value / value_cotacao_btc_brl_bid).toFixed(2);
+            value_result_conversion_ask.innerHTML = (value / value_cotacao_btc_brl_ask).toFixed(2);
+        } else if (select_one.value === 'btc' && select_two.value === 'brl') {
+            value_result_conversion_bid.innerHTML = (value_cotacao_btc_brl_bid * value).toFixed(2);
+            value_result_conversion_ask.innerHTML = (value_cotacao_btc_brl_ask * value).toFixed(2);
         }
     } catch(e) {
         console.log(e);
