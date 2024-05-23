@@ -525,6 +525,9 @@ async function addValue() {
     const value_cotacao_cny_brl_bid = await get_cny_brl_bid();
     const value_cotacao_cny_brl_ask = await get_cny_brl_ask();
 
+    const cont = await getResponse_usd_brl();
+    console.log(cont);
+
 
 
     let select_one = document.getElementById('select_one');

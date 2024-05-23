@@ -35,6 +35,11 @@
     font-size: 1.3rem;
 }
 
+#img-country-table {
+    height: 15px;
+    object-fit: cover;
+}
+
 @media (min-width: 768px) {
     #informations-conversion {
         flex-direction: row;
