@@ -433,7 +433,7 @@ function setInformations() {
             document.querySelector('#img_value_conversion').src = 'https://flagcdn.com/40x30/au.png';
             document.querySelector('#name_country_conversion').textContent = options[10];
         } else if (select_one.value === 'chf') {
-            document.querySelector('#img_value_conversion').src = 'https://flagcdn.com/40x30/li.png';
+            document.querySelector('#img_value_conversion').src = 'https://flagcdn.com/40x30/ch.png';
             document.querySelector('#name_country_conversion').textContent = options[11];
         }  else if (select_one.value === 'cny') {
             document.querySelector('#img_value_conversion').src = 'https://flagcdn.com/40x30/cn.png';
@@ -480,7 +480,7 @@ function setInformations() {
             document.querySelector('#img_converter_value').src = 'https://flagcdn.com/40x30/au.png';
             document.querySelector('#name-moeda-result').textContent = options[10];
         } else if (select_two.value === 'chf') {
-            document.querySelector('#img_converter_value').src = 'https://flagcdn.com/40x30/li.png';
+            document.querySelector('#img_converter_value').src = 'https://flagcdn.com/40x30/ch.png';
             document.querySelector('#name-moeda-result').textContent = options[11];
         }  else if (select_two.value === 'cny') {
             document.querySelector('#img_converter_value').src = 'https://flagcdn.com/40x30/cn.png';
