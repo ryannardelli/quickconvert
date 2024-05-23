@@ -56,12 +56,9 @@ btn_options.addEventListener('click', () => {
     let value_result_conversion = document.querySelector('#value_result_conversion');
 
     let tempNameMoeda = name_moeda_to_conversion.innerText;
+    console.log(tempNameMoeda);
     name_moeda_to_conversion.innerText = name_moeda_result.innerText;
     name_moeda_result.innerText = tempNameMoeda;
-
-    let tempValueMoeda = value_to_conversion.innerText;
-    value_to_conversion.innerText = value_result_conversion.innerText;
-    value_result_conversion.innerText = tempValueMoeda;
     
     let tempSrc = img_value_conversion.src;
     img_value_conversion.src = img_converter_value.src;
