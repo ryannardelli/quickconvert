@@ -49,6 +49,11 @@
     width: auto;
 }
 
+#accordionAboutConversion {
+    width: auto;
+    margin: 0 auto;
+}
+
 @media (min-width: 768px) {
     #informations-conversion {
         flex-direction: row;
@@ -81,4 +86,10 @@
     #table-variacoes {
         width: 600px;
     }
+
+    #accordionAboutConversion {
+        width: 600px;
+        margin: 0 auto;
+    }
+
 }
