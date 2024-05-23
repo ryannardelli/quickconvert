@@ -65,6 +65,7 @@ btn_options.addEventListener('click', () => {
     img_converter_value.src = tempSrc;
 });
 
+// BRL
 async function getResponse_usd_brl() {
     try {
         const response = await fetch('https://economia.awesomeapi.com.br/json/last/USD-BRL');
@@ -363,7 +364,65 @@ async function get_cny_brl_ask() {
     }
 }
 
+// USD
+async function getResponse_usd_eur() {
+    try {
+        const response = await fetch('https://economia.awesomeapi.com.br/json/last/USD-EUR');
+        return response.json();
+    } catch(e) {
+        console.log(e);
+    }
+};
 
+async function getResponse_usd_gbp() {
+    try {
+        const response = await fetch('https://economia.awesomeapi.com.br/json/last/USD-GBP');
+        return response.json();
+    } catch(e) {
+        console.log(e);
+    }
+};
+
+// EUR
+async function getResponse_eur_gbp() {
+    try {
+        const response = await fetch('https://economia.awesomeapi.com.br/json/last/EUR-GBP');
+        return response.json();
+    } catch(e) {
+        console.log(e);
+    }
+};
+
+// AUD
+async function getResponse_aud_brl() {
+    try {
+        const response = await fetch('https://economia.awesomeapi.com.br/json/last/AUD-BRL');
+        return response.json();
+    } catch(e) {
+        console.log(e);
+    }
+};
+
+// JPY
+async function getResponse_jpy_brl() {
+    try {
+        const response = await fetch('https://economia.awesomeapi.com.br/json/last/JPY-BRL');
+        return response.json();
+    } catch(e) {
+        console.log(e);
+    }
+};
+
+
+// CNY
+async function getResponse_cny_brl() {
+    try {
+        const response = await fetch('https://economia.awesomeapi.com.br/json/last/CNY-BRL');
+        return response.json();
+    } catch(e) {
+        console.log(e);
+    }
+};
 
 // async function getResponseImg() {
 //     try {
@@ -489,6 +548,28 @@ function setInformations() {
     });
 }
 
+async function setVariacao() {
+    let variacoes = [];
+    const usd_brl_var = await getResponse_usd_brl();
+    const eur_brl_var = await getResponse_eur_brl();    
+    const gbp_brl_var = await getResponse_gbp_brl();
+    const usd_eur_var = await getResponse_usd_eur();
+    const usd_gbp_var = await getResponse_usd_gbp();
+    const eur_gbp_var = await getResponse_eur_gbp();
+    const cad_brl_var = await getResponse_cad_brl();
+    const aud_brl_var = await getResponse_aud_brl();
+    const jpy_brl_var = await getResponse_jpy_brl();
+    const cny_brl_var = await getResponse_cny_brl();
+
+    variacoes.push(usd_brl_var.USDBRL.varBid, eur_brl_var.EURBRL.varBid, gbp_brl_var.GBPBRL.varBid, usd_eur_var.USDEUR.varBid, usd_gbp_var.USDGBP.varBid, eur_gbp_var.EURGBP.varBid, cad_brl_var.CADBRL.varBid, aud_brl_var.AUDBRL.varBid, jpy_brl_var.JPYBRL.varBid, cny_brl_var.CNYBRL.varBid);
+    const tds = document.querySelectorAll('#variacao');
+    tds.forEach((td, index) => {
+        const td_info = variacoes[index];
+        td.innerHTML =  td_info;
+    })
+}
+
+setVariacao();
 setInformations();
 
 async function addValue() {

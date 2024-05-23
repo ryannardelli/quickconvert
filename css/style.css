@@ -40,6 +40,15 @@
     object-fit: cover;
 }
 
+#container-table {
+    display: flex;
+    justify-content: center;
+}
+
+#table-variacoes {
+    width: auto;
+}
+
 @media (min-width: 768px) {
     #informations-conversion {
         flex-direction: row;
@@ -67,5 +76,9 @@
 
     .title-combinacoes {
         font-size: 2.5rem;
+    }
+
+    #table-variacoes {
+        width: 600px;
     }
 }
