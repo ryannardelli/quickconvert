@@ -285,6 +285,87 @@ async function get_brl_try_ask() {
     }
 }
 
+async function getResponse_aud_brl() {
+    try {
+        const response = await fetch('https://economia.awesomeapi.com.br/json/last/AUD-BRL');
+        return response.json();
+    } catch(e) {
+        console.log(e);
+    }
+};
+
+async function get_aud_brl_bid() {
+    try {
+        const response =  await getResponse_aud_brl();
+        return response.AUDBRL.bid;
+    } catch(e) {
+        console.log(e);
+    }
+}
+
+async function get_aud_brl_ask() {
+    try {
+        const response =  await getResponse_aud_brl();
+        return response.AUDBRL.ask;
+    } catch(e) {
+        console.log(e);
+    }
+}
+
+async function getResponse_chf_brl() {
+    try {
+        const response = await fetch('https://economia.awesomeapi.com.br/json/last/CHF-BRL');
+        return response.json();
+    } catch(e) {
+        console.log(e);
+    }
+};
+
+async function get_chf_brl_bid() {
+    try {
+        const response =  await getResponse_chf_brl();
+        return response.CHFBRL.bid;
+    } catch(e) {
+        console.log(e);
+    }
+}
+
+async function get_chf_brl_ask() {
+    try {
+        const response =  await getResponse_chf_brl();
+        return response.CHFBRL.ask;
+    } catch(e) {
+        console.log(e);
+    }
+}
+
+async function getResponse_cny_brl() {
+    try {
+        const response = await fetch('https://economia.awesomeapi.com.br/json/last/CNY-BRL');
+        return response.json();
+    } catch(e) {
+        console.log(e);
+    }
+};
+
+async function get_cny_brl_bid() {
+    try {
+        const response =  await getResponse_cny_brl();
+        return response.CNYBRL.bid;
+    } catch(e) {
+        console.log(e);
+    }
+}
+
+async function get_cny_brl_ask() {
+    try {
+        const response =  await getResponse_cny_brl();
+        return response.CNYBRL.ask;
+    } catch(e) {
+        console.log(e);
+    }
+}
+
 
 
 // async function getResponseImg() {
@@ -437,8 +518,16 @@ async function addValue() {
 
     const value_cotacao_brl_try_bid = await get_brl_try_bid();
     const value_cotacao_brl_try_ask = await get_brl_try_ask();
-    console.log(value_cotacao_brl_try_bid);
-    console.log(value_cotacao_brl_try_ask);
+
+    const value_cotacao_aud_brl_bid = await get_aud_brl_bid();
+    const value_cotacao_aud_brl_ask = await get_aud_brl_ask();
+
+    const value_cotacao_chf_brl_bid = await get_chf_brl_bid();
+    const value_cotacao_chf_brl_ask = await get_chf_brl_ask();
+
+    const value_cotacao_cny_brl_bid = await get_cny_brl_bid();
+    const value_cotacao_cny_brl_ask = await get_cny_brl_ask();
+
 
 
     let select_one = document.getElementById('select_one');
@@ -517,6 +606,30 @@ async function addValue() {
         } else if (select_one.value === 'try' && select_two.value === 'brl') {
             value_result_conversion_bid.innerHTML = (value_cotacao_brl_try_bid * value).toFixed(2);
             value_result_conversion_ask.innerHTML = (value_cotacao_brl_try_ask * value).toFixed(2);
+        }
+
+        if(select_one.value === 'brl' && select_two.value === 'aud') {
+            value_result_conversion_bid.innerHTML = (value /  value_cotacao_aud_brl_bid).toFixed(2);
+            value_result_conversion_ask.innerHTML = (value / value_cotacao_aud_brl_ask).toFixed(2);
+        } else if (select_one.value === 'aud' && select_two.value === 'brl') {
+            value_result_conversion_bid.innerHTML = (value_cotacao_aud_brl_bid * value).toFixed(2);
+            value_result_conversion_ask.innerHTML = (value_cotacao_aud_brl_ask * value).toFixed(2);
+        }
+
+        if(select_one.value === 'brl' && select_two.value === 'chf') {
+            value_result_conversion_bid.innerHTML = (value /  value_cotacao_chf_brl_bid).toFixed(2);
+            value_result_conversion_ask.innerHTML = (value / value_cotacao_chf_brl_ask).toFixed(2);
+        } else if (select_one.value === 'chf' && select_two.value === 'brl') {
+            value_result_conversion_bid.innerHTML = (value_cotacao_chf_brl_bid * value).toFixed(2);
+            value_result_conversion_ask.innerHTML = (value_cotacao_chf_brl_ask * value).toFixed(2);
+        }
+
+        if(select_one.value === 'brl' && select_two.value === 'cny') {
+            value_result_conversion_bid.innerHTML = (value /  value_cotacao_cny_brl_bid).toFixed(2);
+            value_result_conversion_ask.innerHTML = (value / value_cotacao_cny_brl_ask).toFixed(2);
+        } else if (select_one.value === 'cny' && select_two.value === 'brl') {
+            value_result_conversion_bid.innerHTML = (value_cotacao_cny_brl_bid * value).toFixed(2);
+            value_result_conversion_ask.innerHTML = (value_cotacao_cny_brl_ask * value).toFixed(2);
         }
         
     } catch(e) {
