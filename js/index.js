@@ -29,7 +29,6 @@ input_value.addEventListener('input', (event) => {
     } else if (!/^\d+$/.test(value)) {
         msg.textContent = 'O campo deve conter apenas números';
         input_value.setCustomValidity('Invalid');
-        console.log('contém letras');
     } else {
         msg.textContent = '';
         input_value.setCustomValidity('');
@@ -234,7 +233,7 @@ async function get_btc_brl_ask() {
 
 async function getResponse_jpy_brl() {
     try {
-        const response = await fetch('https://economia.awesomeapi.com.br/json/last/BRL-JPY');
+        const response = await fetch('https://economia.awesomeapi.com.br/json/last/JPY-BRL');
         return response.json();
     } catch(e) {
         console.log(e);
@@ -244,7 +243,7 @@ async function getResponse_jpy_brl() {
 async function get_jpy_brl_bid() {
     try {
         const response =  await getResponse_jpy_brl();
-        return response.BRLJPY.bid;
+        return response.JPYBRL.bid;
     } catch(e) {
         console.log(e);
     }
@@ -253,11 +252,39 @@ async function get_jpy_brl_bid() {
 async function get_jpy_brl_ask() {
     try {
         const response =  await getResponse_jpy_brl();
-        return response.BRLJPY.ask;
+        return response.JPYBRL.ask;
     } catch(e) {
         console.log(e);
     }
 }
+
+async function getResponse_brl_try() {
+    try {
+        const response = await fetch('https://economia.awesomeapi.com.br/json/last/TRY-BRL');
+        return response.json();
+    } catch(e) {
+        console.log(e);
+    }
+};
+
+async function get_brl_try_bid() {
+    try {
+        const response =  await getResponse_brl_try();
+        return response.TRYBRL.bid;
+    } catch(e) {
+        console.log(e);
+    }
+}
+
+async function get_brl_try_ask() {
+    try {
+        const response =  await getResponse_brl_try();
+        return response.TRYBRL.ask;
+    } catch(e) {
+        console.log(e);
+    }
+}
+
 
 
 // async function getResponseImg() {
@@ -408,6 +435,12 @@ async function addValue() {
     const value_cotacao_jpy_brl_bid = await get_jpy_brl_bid();
     const value_cotacao_jpy_brl_ask = await get_jpy_brl_ask();
 
+    const value_cotacao_brl_try_bid = await get_brl_try_bid();
+    const value_cotacao_brl_try_ask = await get_brl_try_ask();
+    console.log(value_cotacao_brl_try_bid);
+    console.log(value_cotacao_brl_try_ask);
+
+
     let select_one = document.getElementById('select_one');
     let select_two = document.getElementById('select_two');
 
@@ -476,6 +509,14 @@ async function addValue() {
         } else if (select_one.value === 'jpy' && select_two.value === 'brl') {
             value_result_conversion_bid.innerHTML = (value_cotacao_jpy_brl_bid * value).toFixed(2);
             value_result_conversion_ask.innerHTML = (value_cotacao_jpy_brl_ask * value).toFixed(2);
+        }
+
+        if(select_one.value === 'brl' && select_two.value === 'try') {
+            value_result_conversion_bid.innerHTML = (value /  value_cotacao_brl_try_bid).toFixed(2);
+            value_result_conversion_ask.innerHTML = (value / value_cotacao_brl_try_ask).toFixed(2);
+        } else if (select_one.value === 'try' && select_two.value === 'brl') {
+            value_result_conversion_bid.innerHTML = (value_cotacao_brl_try_bid * value).toFixed(2);
+            value_result_conversion_ask.innerHTML = (value_cotacao_brl_try_ask * value).toFixed(2);
         }
         
     } catch(e) {
