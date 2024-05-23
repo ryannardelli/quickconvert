@@ -23,6 +23,13 @@
     padding: 5px;
 }
 
+#container-section-conversoes {
+    border-radius: 10px;
+    background: #eee;
+    box-shadow: .5px 10px 15px rgba(0, 0, 0, .2);
+    width: 300px;
+}
+
 @media (min-width: 768px) {
     #informations-conversion {
         flex-direction: row;
@@ -38,5 +45,9 @@
 
     .bi-arrow-left-right, .bi-arrow-counterclockwise {
         padding: 0;
-    }  
+    }
+    
+    #container-section-conversoes {
+        width: 800px;
+    }
 }
