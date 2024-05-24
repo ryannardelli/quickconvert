@@ -54,6 +54,16 @@
     margin: 0 auto;
 }
 
+#nav-items-icons-sociais i {
+    margin-right: 20px;
+}
+
+.navbar-brand {
+    font-weight: bolder;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
 @media (min-width: 768px) {
     #informations-conversion {
         flex-direction: row;
@@ -92,4 +102,8 @@
         margin: 0 auto;
     }
 
+    #nav-items-icons-sociais {
+       position: absolute;
+       left: 80%;
+    }
 }
