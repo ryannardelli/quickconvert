@@ -569,9 +569,6 @@ async function setVariacao() {
     })
 }
 
-setVariacao();
-setInformations();
-
 async function addValue() {
     const value_cotacao_usd_brl_bid = await get_usd_brl_bid();
     const value_contacao_usd_brl_ask = await get_usd_brl_ask();
@@ -718,12 +715,12 @@ async function addValue() {
     }
 }
 
-// async function init() {
-//     try {
-//         await Promise.all([addValue()]);
-//     } catch (error) {
-//         console.error('Erro ao iniciar a aplicação:', error);
-//     }
-// }
+async function init() {
+    try {
+        await Promise.all([setVariacao(), setInformations()]);
+    } catch (error) {
+        console.error('Erro ao iniciar a aplicação:', error);
+    }
+}
 
-// init();
+init();
