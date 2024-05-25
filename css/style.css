@@ -1,3 +1,20 @@
+/* Color Theme Swatches in Hex
+.My-Color-Theme-1-hex { color: #7000F9; }
+.My-Color-Theme-2-hex { color: #0324FA; }
+.My-Color-Theme-3-hex { color: #7781C2; }
+.My-Color-Theme-4-hex { color: #F3F4F6; }
+.My-Color-Theme-5-hex { color: #443952; }
+.My-Color-Theme-6-hex { color: #000000; } */
+
+:root {
+    --color-one: #7000F9;
+    --color-two: #0324FA;
+    --color-three: #7781C2;
+    --color-four: #F3F4F6;
+    --color-five: #443952;
+    --color-six: #000000;
+}
+
 * {
     font-family: 'Montserrat', sans-serif;
 }
@@ -62,6 +79,48 @@
     font-weight: bolder;
     text-transform: uppercase;
     letter-spacing: 1px;
+}
+
+#footer-informations {
+    background: var(--color-three);
+    color: #fff;
+}
+
+#footer-informations a {
+    text-decoration: none;
+    color: #fff;
+    transition: 0.3s;
+}
+
+#footer-informations a:hover {
+    color: #d7d9db;
+}
+
+#footer-informations i {
+    margin-right: 10px;
+    color: var(--color-four);
+}
+
+#container-newsletter {
+    margin: 0 auto;
+}
+
+#form-newsletter {
+    display: flex;
+    gap: 10px;
+}
+
+#form-newsletter button {
+    background: transparent;
+    border-color: var(--color-one);
+    transition: .3s;
+    font-weight: bolder;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+#form-newsletter button:hover {
+    background: var(--color-one);
 }
 
 @media (min-width: 768px) {
