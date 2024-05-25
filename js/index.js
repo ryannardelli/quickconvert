@@ -365,6 +365,33 @@ async function get_cny_brl_ask() {
 }
 
 // USD
+async function getResponse_usd_cad() {
+    try {
+        const response = await fetch('https://economia.awesomeapi.com.br/json/last/USD-CAD');
+        return response.json();
+    } catch(e) {
+        console.log(e);
+    }
+};
+
+async function get_usd_cad_bid() {
+    try {
+        const response =  await getResponse_usd_cad();
+        return response.USDCAD.bid;
+    } catch(e) {
+        console.log(e);
+    }
+}
+
+async function get_usd_cad_ask() {
+    try {
+        const response =  await getResponse_usd_cad();
+        return response.USDCAD.ask;
+    } catch(e) {
+        console.log(e);
+    }
+}
+
 async function getResponse_usd_eur() {
     try {
         const response = await fetch('https://economia.awesomeapi.com.br/json/last/USD-EUR');
@@ -508,6 +535,7 @@ function setInformations() {
         } else {
             btn_conversion.disabled = false;
         }
+
         if(select_two.value === 'brl') {
             document.querySelector('#img_converter_value').src = 'https://flagcdn.com/40x30/br.png';
             document.querySelector('#name-moeda-result').textContent = options[1];
@@ -603,10 +631,8 @@ async function addValue() {
     const value_cotacao_cny_brl_bid = await get_cny_brl_bid();
     const value_cotacao_cny_brl_ask = await get_cny_brl_ask();
 
-    const cont = await getResponse_usd_brl();
-    console.log(cont);
-
-
+    const value_cotacao_usd_cad_bid = await get_usd_cad_bid();;
+    const value_cotacao_usd_cad_ask = await get_usd_cad_ask();
 
     let select_one = document.getElementById('select_one');
     let select_two = document.getElementById('select_two');
@@ -708,6 +734,15 @@ async function addValue() {
         } else if (select_one.value === 'cny' && select_two.value === 'brl') {
             value_result_conversion_bid.innerHTML = (value_cotacao_cny_brl_bid * value).toFixed(2);
             value_result_conversion_ask.innerHTML = (value_cotacao_cny_brl_ask * value).toFixed(2);
+        }
+
+        // de usd para
+        if(select_one.value === 'usd' && select_two.value === 'cad') {
+            value_result_conversion_bid.innerHTML = (value *  value_cotacao_usd_cad_bid).toFixed(2);
+            value_result_conversion_ask.innerHTML = (value * value_cotacao_usd_cad_ask).toFixed(2);
+        } else if(select_one.value === 'cad' && select_two.value === 'usd') {
+            value_result_conversion_bid.innerHTML = (value /  value_cotacao_usd_cad_bid).toFixed(2);
+            value_result_conversion_ask.innerHTML = (value / value_cotacao_usd_cad_ask).toFixed(2);
         }
         
     } catch(e) {
