@@ -445,6 +445,33 @@ async function get_usd_gbp_ask() {
     }
 }
 
+async function getResponse_usd_ars() {
+    try {
+        const response = await fetch('https://economia.awesomeapi.com.br/json/last/USD-ARS');
+        return response.json();
+    } catch(e) {
+        console.log(e);
+    }
+};
+
+async function get_usd_ars_bid() {
+    try {
+        const response =  await getResponse_usd_ars();
+        return response.USDARS.bid;
+    } catch(e) {
+        console.log(e);
+    }
+}
+
+async function get_usd_ars_ask() {
+    try {
+        const response =  await getResponse_usd_ars();
+        return response.USDARS.ask;
+    } catch(e) {
+        console.log(e);
+    }
+}
+
 // EUR
 async function getResponse_eur_gbp() {
     try {
@@ -675,8 +702,11 @@ async function addValue() {
     const value_cotacao_usd_gbp_bid = await get_usd_gbp_bid();
     const value_cotacao_usd_gbp_ask = await get_usd_gbp_ask();
 
-    console.log(value_cotacao_usd_gbp_bid);
-    console.log(value_cotacao_usd_gbp_ask);
+    
+    const value_cotacao_usd_ars_bid = await get_usd_ars_bid();
+    const value_cotacao_usd_ars_ask = await get_usd_ars_ask();
+    console.log(value_cotacao_ars_brl_bid);
+    console.log(value_cotacao_ars_brl_ask);
 
 
     let select_one = document.getElementById('select_one');
@@ -804,6 +834,14 @@ async function addValue() {
         } else if(select_one.value === 'gbp' && select_two.value === 'usd') {
             value_result_conversion_bid.innerHTML = (value /  value_cotacao_usd_gbp_bid).toFixed(2);
             value_result_conversion_ask.innerHTML = (value / value_cotacao_usd_gbp_ask).toFixed(2);
+        }
+
+        if(select_one.value === 'usd' && select_two.value === 'ars') {
+            value_result_conversion_bid.innerHTML = (value *  value_cotacao_usd_ars_bid).toFixed(2);
+            value_result_conversion_ask.innerHTML = (value * value_cotacao_usd_ars_ask).toFixed(2);
+        } else if(select_one.value === 'ars' && select_two.value === 'usd') {
+            value_result_conversion_bid.innerHTML = (value /  value_cotacao_usd_ars_bid).toFixed(2);
+            value_result_conversion_ask.innerHTML = (value / value_cotacao_usd_ars_ask).toFixed(2);
         }
         
     } catch(e) {
