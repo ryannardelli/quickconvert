@@ -110,6 +110,14 @@
     gap: 10px;
 }
 
+#form-newsletter input {
+    border-radius: 5px;
+}
+
+#form-newsletter input:focus {
+    box-shadow: none;
+}
+
 #form-newsletter button {
     background: transparent;
     border-color: var(--color-one);
