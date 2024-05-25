@@ -1,11 +1,3 @@
-/* Color Theme Swatches in Hex
-.My-Color-Theme-1-hex { color: #7000F9; }
-.My-Color-Theme-2-hex { color: #0324FA; }
-.My-Color-Theme-3-hex { color: #7781C2; }
-.My-Color-Theme-4-hex { color: #F3F4F6; }
-.My-Color-Theme-5-hex { color: #443952; }
-.My-Color-Theme-6-hex { color: #000000; } */
-
 :root {
     --color-one: #7000F9;
     --color-two: #0324FA;
