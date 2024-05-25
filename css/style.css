@@ -19,6 +19,10 @@
     font-family: 'Montserrat', sans-serif;
 }
 
+#link-quickconvert{
+    color: var(--color-four);
+}
+
 .navbar {
     background-image: linear-gradient(to bottom, #7000f9, #0324fa);
 }
