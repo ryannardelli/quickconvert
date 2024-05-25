@@ -23,6 +23,11 @@
     color: var(--color-four);
 }
 
+#btn-toggler {
+    background-color: var(--color-four);
+    box-shadow: none;
+}
+
 .navbar {
     background-image: linear-gradient(to bottom, #7000f9, #0324fa);
 }
