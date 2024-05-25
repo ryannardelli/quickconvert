@@ -56,7 +56,6 @@ btn_options.addEventListener('click', () => {
     let value_result_conversion = document.querySelector('#value_result_conversion');
 
     let tempNameMoeda = name_moeda_to_conversion.innerText;
-    console.log(tempNameMoeda);
     name_moeda_to_conversion.innerText = name_moeda_result.innerText;
     name_moeda_result.innerText = tempNameMoeda;
     
@@ -401,6 +400,24 @@ async function getResponse_usd_eur() {
     }
 };
 
+async function get_usd_eur_bid() {
+    try {
+        const response =  await getResponse_usd_eur();
+        return response.USDEUR.bid;
+    } catch(e) {
+        console.log(e);
+    }
+}
+
+async function get_usd_eur_ask() {
+    try {
+        const response =  await getResponse_usd_eur();
+        return response.USDEUR.ask;
+    } catch(e) {
+        console.log(e);
+    }
+}
+
 async function getResponse_usd_gbp() {
     try {
         const response = await fetch('https://economia.awesomeapi.com.br/json/last/USD-GBP');
@@ -409,6 +426,24 @@ async function getResponse_usd_gbp() {
         console.log(e);
     }
 };
+
+async function get_usd_gbp_bid() {
+    try {
+        const response =  await getResponse_usd_gbp();
+        return response.USDGBP.bid;
+    } catch(e) {
+        console.log(e);
+    }
+}
+
+async function get_usd_gbp_ask() {
+    try {
+        const response =  await getResponse_usd_gbp();
+        return response.USDGBP.ask;
+    } catch(e) {
+        console.log(e);
+    }
+}
 
 // EUR
 async function getResponse_eur_gbp() {
@@ -599,7 +634,7 @@ async function setVariacao() {
 
 async function addValue() {
     const value_cotacao_usd_brl_bid = await get_usd_brl_bid();
-    const value_contacao_usd_brl_ask = await get_usd_brl_ask();
+    const value_cotacao_usd_brl_ask = await get_usd_brl_ask();
 
     const value_cotacao_cad_brl_bid = await get_cad_brl_bid();
     const value_cotacao_cad_brl_ask = await get_cad_brl_ask();
@@ -631,8 +666,18 @@ async function addValue() {
     const value_cotacao_cny_brl_bid = await get_cny_brl_bid();
     const value_cotacao_cny_brl_ask = await get_cny_brl_ask();
 
-    const value_cotacao_usd_cad_bid = await get_usd_cad_bid();;
+    const value_cotacao_usd_cad_bid = await get_usd_cad_bid();
     const value_cotacao_usd_cad_ask = await get_usd_cad_ask();
+
+    const value_cotacao_usd_eur_bid = await get_usd_eur_bid();
+    const value_cotacao_usd_eur_ask = await get_usd_eur_ask();
+
+    const value_cotacao_usd_gbp_bid = await get_usd_gbp_bid();
+    const value_cotacao_usd_gbp_ask = await get_usd_gbp_ask();
+
+    console.log(value_cotacao_usd_gbp_bid);
+    console.log(value_cotacao_usd_gbp_ask);
+
 
     let select_one = document.getElementById('select_one');
     let select_two = document.getElementById('select_two');
@@ -650,10 +695,10 @@ async function addValue() {
         // de brl para
         if(select_one.value === 'brl' && select_two.value === 'usd') {
             value_result_conversion_bid.innerHTML = (value / value_cotacao_usd_brl_bid).toFixed(2);
-            value_result_conversion_ask.innerHTML = (value / value_contacao_usd_brl_ask).toFixed(2);
+            value_result_conversion_ask.innerHTML = (value / value_cotacao_usd_brl_ask).toFixed(2);
         } else if (select_one.value === 'usd' && select_two.value === 'brl') {
             value_result_conversion_bid.innerHTML = (value_cotacao_usd_brl_bid * value).toFixed(2);
-            value_result_conversion_ask.innerHTML = (value_contacao_usd_brl_ask * value).toFixed(2);
+            value_result_conversion_ask.innerHTML = (value_cotacao_usd_brl_ask * value).toFixed(2);
         }
 
         if(select_one.value === 'brl' && select_two.value === 'cad') {
@@ -743,6 +788,22 @@ async function addValue() {
         } else if(select_one.value === 'cad' && select_two.value === 'usd') {
             value_result_conversion_bid.innerHTML = (value /  value_cotacao_usd_cad_bid).toFixed(2);
             value_result_conversion_ask.innerHTML = (value / value_cotacao_usd_cad_ask).toFixed(2);
+        }
+
+        if(select_one.value === 'usd' && select_two.value === 'eur') {
+            value_result_conversion_bid.innerHTML = (value *  value_cotacao_usd_eur_bid).toFixed(2);
+            value_result_conversion_ask.innerHTML = (value * value_cotacao_usd_eur_ask).toFixed(2);
+        } else if(select_one.value === 'eur' && select_two.value === 'usd') {
+            value_result_conversion_bid.innerHTML = (value /  value_cotacao_usd_eur_bid).toFixed(2);
+            value_result_conversion_ask.innerHTML = (value / value_cotacao_usd_eur_ask).toFixed(2);
+        }
+
+        if(select_one.value === 'usd' && select_two.value === 'gbp') {
+            value_result_conversion_bid.innerHTML = (value *  value_cotacao_usd_gbp_bid).toFixed(2);
+            value_result_conversion_ask.innerHTML = (value * value_cotacao_usd_gbp_ask).toFixed(2);
+        } else if(select_one.value === 'gbp' && select_two.value === 'usd') {
+            value_result_conversion_bid.innerHTML = (value /  value_cotacao_usd_gbp_bid).toFixed(2);
+            value_result_conversion_ask.innerHTML = (value / value_cotacao_usd_gbp_ask).toFixed(2);
         }
         
     } catch(e) {
