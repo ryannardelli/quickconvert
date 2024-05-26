@@ -526,6 +526,33 @@ async function get_usd_jpy_ask() {
     }
 }
 
+async function getResponse_usd_try() {
+    try {
+        const response = await fetch('https://economia.awesomeapi.com.br/json/last/USD-TRY');
+        return response.json();
+    } catch(e) {
+        console.log(e);
+    }
+};
+
+async function get_usd_try_bid() {
+    try {
+        const response =  await getResponse_usd_try();
+        return response.USDTRY.bid;
+    } catch(e) {
+        console.log(e);
+    }
+}
+
+async function get_usd_try_ask() {
+    try {
+        const response =  await getResponse_usd_try();
+        return response.USDTRY.ask;
+    } catch(e) {
+        console.log(e);
+    }
+}
+
 // EUR
 async function getResponse_eur_gbp() {
     try {
@@ -766,8 +793,11 @@ async function addValue() {
     const value_cotacao_usd_jpy_bid = await get_usd_jpy_bid();
     const value_cotacao_usd_jpy_ask = await get_usd_jpy_ask();
 
-    console.log(value_cotacao_usd_jpy_bid);
-    console.log(value_cotacao_usd_jpy_ask);
+    const value_cotacao_usd_try_bid = await get_usd_try_bid();
+    const value_cotacao_usd_try_ask = await get_usd_try_ask();
+
+    console.log(value_cotacao_usd_try_bid);
+    console.log(value_cotacao_usd_try_ask);
 
 
     let select_one = document.getElementById('select_one');
@@ -919,6 +949,14 @@ async function addValue() {
         } else if(select_one.value === 'jpy' && select_two.value === 'usd') {
             value_result_conversion_bid.innerHTML = (value /  value_cotacao_usd_jpy_bid).toFixed(2);
             value_result_conversion_ask.innerHTML = (value / value_cotacao_usd_jpy_ask).toFixed(2);
+        }
+
+        if(select_one.value === 'usd' && select_two.value === 'try') {
+            value_result_conversion_bid.innerHTML = (value /  value_cotacao_usd_try_bid).toFixed(2);
+            value_result_conversion_ask.innerHTML = (value / value_cotacao_usd_try_ask).toFixed(2);
+        } else if(select_one.value === 'try' && select_two.value === 'usd') {
+            value_result_conversion_bid.innerHTML = (value *  value_cotacao_usd_try_bid).toFixed(2);
+            value_result_conversion_ask.innerHTML = (value * value_cotacao_usd_try_ask).toFixed(2);
         }
         
     } catch(e) {
