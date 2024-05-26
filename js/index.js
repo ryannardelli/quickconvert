@@ -1389,16 +1389,6 @@ async function addValue() {
     }
 }
 
-// function removeOptionsPerValue(value) {
-//     const select = document.getElementById('select_two');
-//     for (let i = 0; i < select.options.length; i++) {
-//         if (select.options[i].value === value) {
-//             select.remove(i);
-//             return;
-//         }
-//     }
-// }
-
 const removedOptions = [];
 
 function removeOptionsPerValue(value) {
