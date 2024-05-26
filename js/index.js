@@ -720,6 +720,168 @@ async function get_eur_ars_ask() {
     }
 }
 
+async function getResponse_eur_btc() {
+    try {
+        const response = await fetch('https://economia.awesomeapi.com.br/json/last/BTC-EUR');
+        return response.json();
+    } catch(e) {
+        console.log(e);
+    }
+};
+
+async function get_eur_btc_bid() {
+    try {
+        const response =  await getResponse_eur_btc();
+        return response.BTCEUR.bid;
+    } catch(e) {
+        console.log(e);
+    }
+}
+
+async function get_eur_btc_ask() {
+    try {
+        const response =  await getResponse_eur_btc();
+        return response.BTCEUR.ask;
+    } catch(e) {
+        console.log(e);
+    }
+}
+
+async function getResponse_eur_jpy() {
+    try {
+        const response = await fetch('https://economia.awesomeapi.com.br/json/last/EUR-JPY');
+        return response.json();
+    } catch(e) {
+        console.log(e);
+    }
+};
+
+async function get_eur_jpy_bid() {
+    try {
+        const response =  await getResponse_eur_jpy();
+        return response.EURJPY.bid;
+    } catch(e) {
+        console.log(e);
+    }
+}
+
+async function get_eur_jpy_ask() {
+    try {
+        const response =  await getResponse_eur_jpy();
+        return response.EURJPY.ask;
+    } catch(e) {
+        console.log(e);
+    }
+}
+
+async function getResponse_eur_try() {
+    try {
+        const response = await fetch('https://economia.awesomeapi.com.br/json/last/EUR-TRY');
+        return response.json();
+    } catch(e) {
+        console.log(e);
+    }
+};
+
+async function get_eur_try_bid() {
+    try {
+        const response =  await getResponse_eur_try();
+        return response.EURTRY.bid;
+    } catch(e) {
+        console.log(e);
+    }
+}
+
+async function get_eur_try_ask() {
+    try {
+        const response =  await getResponse_eur_try();
+        return response.EURTRY.ask;
+    } catch(e) {
+        console.log(e);
+    }
+}
+
+async function getResponse_eur_aud() {
+    try {
+        const response = await fetch('https://economia.awesomeapi.com.br/json/last/EUR-AUD');
+        return response.json();
+    } catch(e) {
+        console.log(e);
+    }
+};
+
+async function get_eur_aud_bid() {
+    try {
+        const response =  await getResponse_eur_aud();
+        return response.EURAUD.bid;
+    } catch(e) {
+        console.log(e);
+    }
+}
+
+async function get_eur_aud_ask() {
+    try {
+        const response =  await getResponse_eur_aud();
+        return response.EURAUD.ask;
+    } catch(e) {
+        console.log(e);
+    }
+}
+
+async function getResponse_eur_chf() {
+    try {
+        const response = await fetch('https://economia.awesomeapi.com.br/json/last/EUR-CHF');
+        return response.json();
+    } catch(e) {
+        console.log(e);
+    }
+};
+
+async function get_eur_chf_bid() {
+    try {
+        const response =  await getResponse_eur_chf();
+        return response.EURCHF.bid;
+    } catch(e) {
+        console.log(e);
+    }
+}
+
+async function get_eur_chf_ask() {
+    try {
+        const response =  await getResponse_eur_chf();
+        return response.EURCHF.ask;
+    } catch(e) {
+        console.log(e);
+    }
+}
+
+async function getResponse_eur_cny() {
+    try {
+        const response = await fetch('https://economia.awesomeapi.com.br/json/last/EUR-CNY');
+        return response.json();
+    } catch(e) {
+        console.log(e);
+    }
+};
+
+async function get_eur_cny_bid() {
+    try {
+        const response =  await getResponse_eur_cny();
+        return response.EURCNY.bid;
+    } catch(e) {
+        console.log(e);
+    }
+}
+
+async function get_eur_cny_ask() {
+    try {
+        const response =  await getResponse_eur_cny();
+        return response.EURCNY.ask;
+    } catch(e) {
+        console.log(e);
+    }
+}
+
 // CNY
 async function getResponse_cny_brl() {
     try {
@@ -952,10 +1114,23 @@ async function addValue() {
     const value_cotacao_eur_ars_bid = await get_eur_ars_bid();
     const value_cotacao_eur_ars_ask = await get_eur_ars_ask();
 
+    const value_cotacao_eur_btc_bid = await get_eur_btc_bid();
+    const value_cotacao_eur_btc_ask = await get_eur_btc_ask();
 
-    console.log(value_cotacao_eur_ars_bid);
-    console.log(value_cotacao_eur_ars_ask);
+    const value_cotacao_eur_jpy_bid = await get_eur_jpy_bid();
+    const value_cotacao_eur_jpy_ask = await get_eur_jpy_ask();
 
+    const value_cotacao_eur_try_bid = await get_eur_try_bid();
+    const value_cotacao_eur_try_ask = await get_eur_try_ask();
+
+    const value_cotacao_eur_aud_bid = await get_eur_aud_bid();
+    const value_cotacao_eur_aud_ask = await get_eur_aud_ask();
+
+    const value_cotacao_eur_chf_bid = await get_eur_chf_bid();
+    const value_cotacao_eur_chf_ask = await get_eur_chf_ask();
+
+    const value_cotacao_eur_cny_bid = await get_eur_cny_bid();
+    const value_cotacao_eur_cny_ask = await get_eur_cny_ask();
 
     let select_one = document.getElementById('select_one');
     let select_two = document.getElementById('select_two');
@@ -1158,12 +1333,61 @@ async function addValue() {
             value_result_conversion_ask.innerHTML = (value * value_cotacao_eur_ars_ask).toFixed(2);
         }
 
-        if(select_one.value === 'ars' && select_two.value === 'eurs') {
+        if(select_one.value === 'eur' && select_two.value === 'gbp') {
             value_result_conversion_bid.innerHTML = (value *  value_cotacao_eur_gbp_bid).toFixed(2);
             value_result_conversion_ask.innerHTML = (value * value_cotacao_eur_gbp_ask).toFixed(2);
         } else if(select_one.value === 'gbp' && select_two.value === 'eur') {
             value_result_conversion_bid.innerHTML = (value /  value_cotacao_eur_gbp_bid).toFixed(2);
             value_result_conversion_ask.innerHTML = (value / value_cotacao_eur_gbp_ask).toFixed(2);
+        }
+
+        if(select_one.value === 'eur' && select_two.value === 'btc') {
+            value_result_conversion_bid.innerHTML = (value *  value_cotacao_eur_btc_bid).toFixed(2);
+            value_result_conversion_ask.innerHTML = (value * value_cotacao_eur_btc_ask).toFixed(2);
+        } else if(select_one.value === 'btc' && select_two.value === 'eur') {
+            value_result_conversion_bid.innerHTML = (value /  value_cotacao_eur_btc_bid).toFixed(2);
+            value_result_conversion_ask.innerHTML = (value / value_cotacao_eur_btc_ask).toFixed(2);
+        }
+
+        if(select_one.value === 'eur' && select_two.value === 'jpy') {
+            value_result_conversion_bid.innerHTML = (value *  value_cotacao_eur_jpy_bid).toFixed(2);
+            value_result_conversion_ask.innerHTML = (value * value_cotacao_eur_jpy_ask).toFixed(2);
+        } else if(select_one.value === 'jpy' && select_two.value === 'eur') {
+            value_result_conversion_bid.innerHTML = (value /  value_cotacao_eur_jpy_bid).toFixed(2);
+            value_result_conversion_ask.innerHTML = (value / value_cotacao_eur_jpy_ask).toFixed(2);
+        }
+
+        if(select_one.value === 'eur' && select_two.value === 'try') {
+            value_result_conversion_bid.innerHTML = (value *  value_cotacao_eur_try_bid).toFixed(2);
+            value_result_conversion_ask.innerHTML = (value * value_cotacao_eur_try_ask).toFixed(2);
+        } else if(select_one.value === 'try' && select_two.value === 'eur') {
+            value_result_conversion_bid.innerHTML = (value /  value_cotacao_eur_try_bid).toFixed(2);
+            value_result_conversion_ask.innerHTML = (value / value_cotacao_eur_try_ask).toFixed(2);
+        }
+
+        if(select_one.value === 'eur' && select_two.value === 'aud') {
+            value_result_conversion_bid.innerHTML = (value *  value_cotacao_eur_aud_bid).toFixed(2);
+            value_result_conversion_ask.innerHTML = (value * value_cotacao_eur_aud_ask).toFixed(2);
+        } else if(select_one.value === 'aud' && select_two.value === 'eur') {
+            value_result_conversion_bid.innerHTML = (value /  value_cotacao_eur_aud_bid).toFixed(2);
+            value_result_conversion_ask.innerHTML = (value / value_cotacao_eur_aud_ask).toFixed(2);
+        }
+
+        if(select_one.value === 'eur' && select_two.value === 'chf') {
+            value_result_conversion_bid.innerHTML = (value *  value_cotacao_eur_chf_bid).toFixed(2);
+            value_result_conversion_ask.innerHTML = (value * value_cotacao_eur_chf_ask).toFixed(2);
+        } else if(select_one.value === 'chf' && select_two.value === 'eur') {
+            value_result_conversion_bid.innerHTML = (value /  value_cotacao_eur_chf_bid).toFixed(2);
+            value_result_conversion_ask.innerHTML = (value / value_cotacao_eur_chf_ask).toFixed(2);
+        }
+
+        
+        if(select_one.value === 'eur' && select_two.value === 'cny') {
+            value_result_conversion_bid.innerHTML = (value *  value_cotacao_eur_cny_bid).toFixed(2);
+            value_result_conversion_ask.innerHTML = (value * value_cotacao_eur_cny_ask).toFixed(2);
+        } else if(select_one.value === 'cny' && select_two.value === 'eur') {
+            value_result_conversion_bid.innerHTML = (value /  value_cotacao_eur_cny_bid).toFixed(2);
+            value_result_conversion_ask.innerHTML = (value / value_cotacao_eur_cny_ask).toFixed(2);
         }
         
     } catch(e) {
