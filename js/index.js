@@ -635,6 +635,36 @@ async function get_usd_cny_ask() {
     }
 }
 
+// CAD
+async function getResponse_cad_eur() {
+    try {
+        const response = await fetch('https://economia.awesomeapi.com.br/json/last/CAD-EUR');
+        return response.json();
+    } catch(e) {
+        console.log(e);
+    }
+};
+
+
+async function get_cad_eur_bid() {
+    try {
+        const response =  await getResponse_cad_eur();
+        return response.CADEUR.bid;
+    } catch(e) {
+        console.log(e);
+    }
+}
+
+async function get_cad_eur_ask() {
+    try {
+        const response =  await getResponse_cad_eur();
+        return response.CADEUR.ask;
+    } catch(e) {
+        console.log(e);
+    }
+}
+
+
 // EUR
 async function getResponse_eur_gbp() {
     try {
@@ -887,6 +917,9 @@ async function addValue() {
     const value_cotacao_usd_cny_bid = await get_usd_cny_bid();
     const value_cotacao_usd_cny_ask = await get_usd_cny_ask();
 
+    const value_cotacao_cad_eur_bid = await get_cad_eur_bid();
+    const value_cotacao_cad_eur_ask = await get_cad_eur_ask();
+
 
     let select_one = document.getElementById('select_one');
     let select_two = document.getElementById('select_two');
@@ -1069,6 +1102,15 @@ async function addValue() {
         } else if(select_one.value === 'cny' && select_two.value === 'usd') {
             value_result_conversion_bid.innerHTML = (value /  value_cotacao_usd_cny_bid).toFixed(2);
             value_result_conversion_ask.innerHTML = (value / value_cotacao_usd_cny_ask).toFixed(2);
+        }
+
+        // de cad para     
+        if(select_one.value === 'cad' && select_two.value === 'eur') {
+            value_result_conversion_bid.innerHTML = (value *  value_cotacao_cad_eur_bid).toFixed(2);
+            value_result_conversion_ask.innerHTML = (value * value_cotacao_cad_eur_ask).toFixed(2);
+        } else if(select_one.value === 'eur' && select_two.value === 'cad') {
+            value_result_conversion_bid.innerHTML = (value /  value_cotacao_cad_eur_bid).toFixed(2);
+            value_result_conversion_ask.innerHTML = (value / value_cotacao_cad_eur_ask).toFixed(2);
         }
         
     } catch(e) {
