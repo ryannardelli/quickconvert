@@ -472,6 +472,33 @@ async function get_usd_ars_ask() {
     }
 }
 
+async function getResponse_usd_btc() {
+    try {
+        const response = await fetch('https://economia.awesomeapi.com.br/json/last/BTC-USD');
+        return response.json();
+    } catch(e) {
+        console.log(e);
+    }
+};
+
+async function get_usd_btc_bid() {
+    try {
+        const response =  await getResponse_usd_btc();
+        return response.BTCUSD.bid;
+    } catch(e) {
+        console.log(e);
+    }
+}
+
+async function get_usd_btc_ask() {
+    try {
+        const response =  await getResponse_usd_btc();
+        return response.BTCUSD.ask;
+    } catch(e) {
+        console.log(e);
+    }
+}
+
 // EUR
 async function getResponse_eur_gbp() {
     try {
@@ -705,8 +732,12 @@ async function addValue() {
     
     const value_cotacao_usd_ars_bid = await get_usd_ars_bid();
     const value_cotacao_usd_ars_ask = await get_usd_ars_ask();
-    console.log(value_cotacao_ars_brl_bid);
-    console.log(value_cotacao_ars_brl_ask);
+
+    const value_cotacao_usd_btc_bid = await get_usd_btc_bid();
+    const value_cotacao_usd_btc_ask = await get_usd_btc_ask();
+
+    console.log(value_cotacao_btc_brl_bid);
+    console.log(value_cotacao_btc_brl_ask);
 
 
     let select_one = document.getElementById('select_one');
@@ -842,6 +873,14 @@ async function addValue() {
         } else if(select_one.value === 'ars' && select_two.value === 'usd') {
             value_result_conversion_bid.innerHTML = (value /  value_cotacao_usd_ars_bid).toFixed(2);
             value_result_conversion_ask.innerHTML = (value / value_cotacao_usd_ars_ask).toFixed(2);
+        }
+
+         if(select_one.value === 'usd' && select_two.value === 'btc') {
+            value_result_conversion_bid.innerHTML = (value /  value_cotacao_usd_btc_bid).toFixed(2);
+            value_result_conversion_ask.innerHTML = (value / value_cotacao_usd_btc_ask).toFixed(2);
+        } else if(select_one.value === 'btc' && select_two.value === 'usd') {
+            value_result_conversion_bid.innerHTML = (value *  value_cotacao_usd_btc_bid).toFixed(2);
+            value_result_conversion_ask.innerHTML = (value * value_cotacao_usd_btc_ask).toFixed(2);
         }
         
     } catch(e) {
