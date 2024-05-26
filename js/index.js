@@ -52,9 +52,6 @@ btn_options.addEventListener('click', () => {
     let name_moeda_to_conversion = document.querySelector('#name_country_conversion');
     let name_moeda_result = document.querySelector('#name-moeda-result');
 
-    let value_to_conversion = document.querySelector('#value_moeda_to_conversion');
-    let value_result_conversion = document.querySelector('#value_result_conversion');
-
     let tempNameMoeda = name_moeda_to_conversion.innerText;
     name_moeda_to_conversion.innerText = name_moeda_result.innerText;
     name_moeda_result.innerText = tempNameMoeda;
@@ -892,24 +889,6 @@ async function getResponse_cny_brl() {
     }
 };
 
-// async function getResponseImg() {
-//     try {
-//         const response = await fetch('https://flagcdn.com/pt/codes.json');
-//         return response.json();
-//     } catch(e) {
-//         console.log(e);
-//     }
-// };
-
-// async function setResponseImg() {
-//     try {
-//         const response = await getResponseImg();
-//         console.log(response);
-//     } catch(e) {
-//         console.log(e);
-//     }
-// }
-
 function setInformations() {
     let select_one = document.getElementById('select_one');
     let select_two = document.getElementById('select_two');
@@ -922,6 +901,20 @@ function setInformations() {
 
     select_one.addEventListener('change', () => {
         document.querySelector('#img_value_conversion').classList.remove('d-none');
+
+        if(select_one.value === 'gbp' || select_one.value === 'ars' || select_one.value === 'btc' || select_one.value === 'jpy' || select_one.value === 'try' || select_one.value === 'aud' || select_one.value === 'chf' || select_one.value === 'cny' || select_one.value === 'gbp' || select_one.value === 'cad') {
+            removeOptionsPerValue('ars');
+            removeOptionsPerValue('cad');
+            removeOptionsPerValue('btc');
+            removeOptionsPerValue('jpy');
+            removeOptionsPerValue('try');
+            removeOptionsPerValue('aud');
+            removeOptionsPerValue('chf');
+            removeOptionsPerValue('cny');
+            removeOptionsPerValue('gbp');
+        } else {
+            restoreOptions();
+        }
 
         if(select_one.value === select_two.value) {
             btn_conversion.disabled = true;
@@ -1039,6 +1032,8 @@ async function setVariacao() {
 }
 
 async function addValue() {
+    const toast = document.querySelector('#toast');
+
     const value_cotacao_usd_brl_bid = await get_usd_brl_bid();
     const value_cotacao_usd_brl_ask = await get_usd_brl_ask();
 
@@ -1143,7 +1138,6 @@ async function addValue() {
         document.querySelectorAll('#value_moeda_to_conversion').forEach(value_moeda => {
             value_moeda.innerHTML = value;
         });
-
 
         // de brl para
         if(select_one.value === 'brl' && select_two.value === 'usd') {
@@ -1392,6 +1386,37 @@ async function addValue() {
         
     } catch(e) {
         console.log(e);
+    }
+}
+
+// function removeOptionsPerValue(value) {
+//     const select = document.getElementById('select_two');
+//     for (let i = 0; i < select.options.length; i++) {
+//         if (select.options[i].value === value) {
+//             select.remove(i);
+//             return;
+//         }
+//     }
+// }
+
+const removedOptions = [];
+
+function removeOptionsPerValue(value) {
+    const select = document.getElementById('select_two');
+    for (let i = 0; i < select.options.length; i++) {
+        if (select.options[i].value === value) {
+            removedOptions.push(select.options[i]);
+            select.remove(i);
+            return;
+        }
+    }
+}
+
+function restoreOptions() {
+    const select = document.getElementById('select_two');
+    while (removedOptions.length > 0) {
+        const option = removedOptions.pop();
+        select.add(option);
     }
 }
 
