@@ -19,14 +19,13 @@ Este repositório contém um **Conversor de Moedas** desenvolvido para facilitar
 ## 📂 Estrutura do Projeto
 
 - **index.html**: Página principal do conversor de moedas.
-- **styles.css**: Arquivo de estilos customizados.
-- **script.js**: Lógica de conversão e integração com a API de taxas de câmbio.
-- **/assets**: Contém imagens e outros recursos estáticos.
-- **/bootstrap**: Arquivos do framework Bootstrap.
+- **css/style.css**: Arquivo de estilos customizados.
+- **js/index.js**: Lógica de conversão e integração com a API de taxas de câmbio.
+- **/img**: Contém imagens e outros recursos estáticos.
 
 ## 📦 Instalação
 
-1. Clone este repositório: `git clone https://github.com/seu-usuario/nome-do-repositorio.git`
+1. Clone este repositório: `git clone https://github.com/ryannardelli/quickconvert.git`
 2. Navegue até o diretório do projeto: `cd nome-do-repositorio`
 3. Abra o arquivo `index.html` no navegador para visualizar e utilizar o conversor de moedas.
 
