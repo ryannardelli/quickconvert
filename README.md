@@ -33,6 +33,10 @@ Este repositório contém um **Conversor de Moedas** desenvolvido para facilitar
 
 Este projeto consome dados de taxas de câmbio em tempo real através da API [AwesomeApi](https://docs.awesomeapi.com.br/api-de-moedas). Certifique-se de obter uma chave de API e configurar as chamadas conforme necessário.
 
+## 🌐 Acesso Online
+O projeto está hospedado. Você pode acessá-lo através do seguinte link:
+[Conversor de Moedas - Acesse Aqui](https://ryannardelli.github.io/e-commerce/)
+
 ## 🤝 Contribuições
 
 Contribuições são bem-vindas! Se você tiver sugestões de melhorias ou novas funcionalidades, sinta-se à vontade para abrir uma *issue* ou enviar um *pull request*.
