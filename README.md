@@ -35,7 +35,7 @@ Este projeto consome dados de taxas de câmbio em tempo real através da API [Aw
 
 ## 🌐 Acesso Online
 O projeto está hospedado. Você pode acessá-lo através do seguinte link:
-[Conversor de Moedas - Acesse Aqui](https://ryannardelli.github.io/e-commerce/)
+[Conversor de Moedas - Acesse Aqui](https://ryannardelli.github.io/quickconvert/)
 
 ## 🤝 Contribuições
 
